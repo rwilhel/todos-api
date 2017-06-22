@@ -16,6 +16,7 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module TodosApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -29,5 +30,9 @@ module TodosApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.eager_load_paths << Rails.root.join('lib')
+    config.enable_dependency_loading = true
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
